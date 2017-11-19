@@ -15,7 +15,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 mongoose.Promise = Promise;
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news"
+var MONGO_URI = process.env.MONGODB_URI;
+//var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news"
 var promise = mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
@@ -90,7 +91,7 @@ app.delete("/articles/:id", function (req, res) {
   var id = req.params.id.toString();
   console.log("am right here");
   db.Note.remove({
-    "._id": id
+    ".ic_id": id
   }).exec(function (error, doc) {
     if (error) {
       console.log(error);
