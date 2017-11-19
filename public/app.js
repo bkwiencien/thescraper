@@ -4,7 +4,7 @@ $.getJSON("/articles", function(data) {
   for (var i = 0; i < data.length; i++) {
    // need an href for the link
   // console.log(data[i].link) ;
-   var xoxo ="<p data-id='" + data[i]._id + "'>" + data[i].title+ " click to add note " + "<br>" + "<a href=" + data[i].link + "> clickhere for article </p>";
+   var xoxo ="<p data-id='" + data[i]._id + "'>" + data[i].title+ " (click to add note) " + "<br>" + "<a href=" + data[i].link + "> clickhere for article </p>";
    $("#articles").append(xoxo);
   // console.log(xoxo);
    // $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br>" + "<a href=" + data[i].link + "clickhere for article ></p>");
@@ -81,7 +81,7 @@ $(document).on("click", "#deletenote", function() {
   var thisId = $(this).attr("data-id");
   $.ajax({
     method: "DELETE",
-    url: "/delete/" + thisId
+    url: "/articles/" + thisId
   }).done(function(data) {
     $("#notes").empty();
   });

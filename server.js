@@ -86,9 +86,20 @@ app.post("/articles/:id", function(req, res) {
       res.json(err);
     });
 });
-app.post("/delete/:id",function(req,res) {
-  console.log("in delete note server");
-  res.send("ok");
+app.delete("/articles/:id", function (req, res) {
+  var id = req.params.id.toString();
+  console.log("am right here");
+  db.Note.remove({
+    "._id": id
+  }).exec(function (error, doc) {
+    if (error) {
+      console.log(error);
+    }
+    else {
+      console.log("note deleted");
+      res.redirect("/" );
+    }
+  });
 });
 
 app.listen(PORT, function() {
