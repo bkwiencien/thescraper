@@ -91,7 +91,7 @@ app.delete("/articles/:id", function (req, res) {
   var id = req.params.id.toString();
   console.log("am right here");
   db.Note.remove({
-    ".ic_id": id
+    "._id": id
   }).exec(function (error, doc) {
     if (error) {
       console.log(error);
