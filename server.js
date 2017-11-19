@@ -85,6 +85,10 @@ app.post("/articles/:id", function(req, res) {
       res.json(err);
     });
 });
+app.post("/delete",function(req,res) {
+  console.log("in delete note server");
+  res.send("ok");
+});
 
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");

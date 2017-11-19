@@ -37,6 +37,8 @@ $(document).on("click", "p", function() {
       
       $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
+      $("#notes").append("<button data-id'" + data._id + "' id='deletenote'>Delete Note</button>");
+
     
       if (data.note) {
       
@@ -49,7 +51,7 @@ $(document).on("click", "p", function() {
 
 
 $(document).on("click", "#savenote", function() {
-  
+  console.log("in save note");
   var thisId = $(this).attr("data-id");
 
  
@@ -75,3 +77,31 @@ $(document).on("click", "#savenote", function() {
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
+$(document).on("click", "#deletenote", function() {
+  console.log("in delete note");
+  var thisId = $(this).attr("data-id");
+
+ 
+  $.ajax({
+    method: "POST",
+    url: "/articles/" + thisId,
+    data: {
+    
+      title: $("#titleinput").val(),
+    
+      body: $("#bodyinput").val()
+    }
+  })
+   
+    .done(function(data) {
+      
+      console.log(data);
+     
+      $("#notes").empty();
+    });
+
+
+  $("#titleinput").val("");
+  $("#bodyinput").val("");
+});
+
