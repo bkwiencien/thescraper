@@ -72,6 +72,7 @@ app.get("/articles/:id", function(req, res) {
 });
 
 app.post("/articles/:id", function(req, res) {
+  console.log("here");
   db.Note
     .create(req.body)
     .then(function(dbNote) {
@@ -85,7 +86,7 @@ app.post("/articles/:id", function(req, res) {
       res.json(err);
     });
 });
-app.post("/delete",function(req,res) {
+app.post("/delete/:id",function(req,res) {
   console.log("in delete note server");
   res.send("ok");
 });
