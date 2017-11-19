@@ -1,4 +1,4 @@
-var express = require("express");
+ var express = require("express");
 var request  = require('request');
 var bodyParser = require("body-parser");
 var logger = require("morgan");
@@ -90,7 +90,7 @@ app.post("/articles/:id", function(req, res) {
 app.delete("/articles/:id", function (req, res) {
   var id = req.params.id.toString();
   console.log("am right here");
-  db.Note.remove({
+  db.Note.deleteOne({
     "._id": id
   }).exec(function (error, doc) {
     if (error) {
