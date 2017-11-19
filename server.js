@@ -19,10 +19,6 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news"
 var promise = mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
-//var db = mongoose.connection;
-//mongoose.connect("mongodb://localhost/homework", {
-//  useMongoClient: true
-//});
 
 app.get("/scrape", function(req, res) {
  axios.get("https://news.google.com/news/?gl=US&ned=us&hl=en").then(function(response) {
